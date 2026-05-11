@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import Link from "next/link";
+import { useState } from "react";
 import { calculateVat } from "@/lib/vat-calculator";
 import { formatChf } from "@/lib/format";
-import { createInvoice } from "../actions";
 
 interface ClientOption {
   id: string;
@@ -125,7 +125,7 @@ export function InvoiceForm({
     vat_rate: parseFloat(i.vat_rate) || 0,
   }));
 
-  const vat = useMemo(() => calculateVat(parsedItems), [JSON.stringify(parsedItems)]);
+  const vat = calculateVat(parsedItems);
 
   const lineItemsJson = JSON.stringify(
     items.map((i) => ({
@@ -143,12 +143,12 @@ export function InvoiceForm({
         <p className="text-gray-500 text-sm">
           Zuerst einen Kunden anlegen, bevor eine Rechnung erstellt werden kann.
         </p>
-        <a
+        <Link
           href="/kunden/neu"
           className="mt-3 inline-block text-sm font-medium text-gray-900 underline underline-offset-2"
         >
           Kunden anlegen
-        </a>
+        </Link>
       </div>
     );
   }
@@ -384,12 +384,12 @@ export function InvoiceForm({
         >
           {submitLabel}
         </button>
-        <a
+        <Link
           href="/rechnungen"
           className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
         >
           Abbrechen
-        </a>
+        </Link>
       </div>
     </form>
   );

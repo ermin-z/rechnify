@@ -1,8 +1,242 @@
-⨯ Another next dev server is already running.
-
-- Local:        http://localhost:3000
-- PID:          41088
-- Dir:          C:\Users\Ermin Zoronjic\Documents\rechnify\rechnify
-- Log:          .next\dev\logs\next-development.log
-
-Run taskkill /PID 41088 /F to stop it.
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+⨯ Error: Failed query: select "invoices"."status", "invoices"."issue_date", "invoice_line_items"."quantity", "invoice_line_items"."unit_price", "invoice_line_items"."vat_rate" from "invoices" inner join "invoice_line_items" on "invoice_line_items"."invoice_id" = "invoices"."id" where ("invoices"."status" <> $1 and "invoices"."issue_date" LIKE $2)
+params: entwurf,2026-%
+    at async DashboardPage (app\page.tsx:12:16)
+  10 |
+  11 | export default async function DashboardPage() {
+> 12 |   const rows = await db
+     |                ^
+  13 |     .select({
+  14 |       status: invoices.status,
+  15 |       issue_date: invoices.issue_date, {
+  query: 'select "invoices"."status", "invoices"."issue_date", "invoice_line_items"."quantity", "invoice_line_items"."unit_price", "invoice_line_items"."vat_rate" from "invoices" inner join "invoice_line_items" on "invoice_line_items"."invoice_id" = "invoices"."id" where ("invoices"."status" <> $1 and "invoices"."issue_date" LIKE $2)',
+  params: [ 'entwurf', '2026-%' ],
+  digest: '1743658467',
+  [cause]: Error [NeonDbError]: operator does not exist: date ~~ unknown
+      at async DashboardPage (app\page.tsx:12:16)
+    10 |
+    11 | export default async function DashboardPage() {
+  > 12 |   const rows = await db
+       |                ^
+    13 |     .select({
+    14 |       status: invoices.status,
+    15 |       issue_date: invoices.issue_date, {
+    severity: 'ERROR',
+    code: '42883',
+    detail: undefined,
+    hint: 'No operator matches the given name and argument types. You might need to add explicit type casts.',
+    position: '318',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_oper.c',
+    line: '635',
+    routine: 'op_error',
+    sourceError: undefined
+  }
+}
+[browser] Uncaught Error: Failed query: select "invoices"."status", "invoices"."issue_date", "invoice_line_items"."quantity", "invoice_line_items"."unit_price", "invoice_line_items"."vat_rate" from "invoices" inner join "invoice_line_items" on "invoice_line_items"."invoice_id" = "invoices"."id" where ("invoices"."status" <> $1 and "invoices"."issue_date" LIKE $2)
+params: entwurf,2026-%
+    at  DashboardPage (app\page.tsx:12:16)
+    at resolveErrorDev (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:1919:105)
+    at processFullStringRow (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2434:29)
+    at processFullBinaryRow (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2393:9)
+    at processBinaryChunk (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2502:221)
+    at progress (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2689:13)
+  10 |
+  11 | export default async function DashboardPage() {
+> 12 |   const rows = await db
+     |                ^
+  13 |     .select({
+  14 |       status: invoices.status,
+  15 |       issue_date: invoices.issue_date,
+⨯ Error: Failed query: select "invoices"."status", "invoices"."issue_date", "invoice_line_items"."quantity", "invoice_line_items"."unit_price", "invoice_line_items"."vat_rate" from "invoices" inner join "invoice_line_items" on "invoice_line_items"."invoice_id" = "invoices"."id" where ("invoices"."status" <> $1 and "invoices"."issue_date" LIKE $2)
+params: entwurf,2026-%
+    at async DashboardPage (app\page.tsx:12:16)
+  10 |
+  11 | export default async function DashboardPage() {
+> 12 |   const rows = await db
+     |                ^
+  13 |     .select({
+  14 |       status: invoices.status,
+  15 |       issue_date: invoices.issue_date, {
+  query: 'select "invoices"."status", "invoices"."issue_date", "invoice_line_items"."quantity", "invoice_line_items"."unit_price", "invoice_line_items"."vat_rate" from "invoices" inner join "invoice_line_items" on "invoice_line_items"."invoice_id" = "invoices"."id" where ("invoices"."status" <> $1 and "invoices"."issue_date" LIKE $2)',
+  params: [ 'entwurf', '2026-%' ],
+  digest: '1743658467',
+  [cause]: Error [NeonDbError]: operator does not exist: date ~~ unknown
+      at async DashboardPage (app\page.tsx:12:16)
+    10 |
+    11 | export default async function DashboardPage() {
+  > 12 |   const rows = await db
+       |                ^
+    13 |     .select({
+    14 |       status: invoices.status,
+    15 |       issue_date: invoices.issue_date, {
+    severity: 'ERROR',
+    code: '42883',
+    detail: undefined,
+    hint: 'No operator matches the given name and argument types. You might need to add explicit type casts.',
+    position: '318',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_oper.c',
+    line: '635',
+    routine: 'op_error',
+    sourceError: undefined
+  }
+}
+[browser] Uncaught Error: Failed query: select "invoices"."status", "invoices"."issue_date", "invoice_line_items"."quantity", "invoice_line_items"."unit_price", "invoice_line_items"."vat_rate" from "invoices" inner join "invoice_line_items" on "invoice_line_items"."invoice_id" = "invoices"."id" where ("invoices"."status" <> $1 and "invoices"."issue_date" LIKE $2)
+params: entwurf,2026-%
+    at  DashboardPage (app\page.tsx:12:16)
+    at resolveErrorDev (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:1919:105)
+    at processFullStringRow (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2434:29)
+    at processFullBinaryRow (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2393:9)
+    at processBinaryChunk (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2502:221)
+    at progress (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2689:13)
+  10 |
+  11 | export default async function DashboardPage() {
+> 12 |   const rows = await db
+     |                ^
+  13 |     .select({
+  14 |       status: invoices.status,
+  15 |       issue_date: invoices.issue_date,
+⨯ Error: No transactions support in neon-http driver
+    at createInvoice (app\rechnungen\actions.ts:68:12)
+  66 |
+  67 |   let invoiceId!: string;
+> 68 |   await db.transaction(async (tx) => {
+     |            ^
+  69 |     const [invoice] = await tx
+  70 |       .insert(invoices)
+  71 |       .values({ ...fields, invoice_number: invoiceNumber, status: "entwurf" }) {
+  digest: '520701565'
+}
+[browser] Uncaught Error: No transactions support in neon-http driver
+    at createInvoice (app\rechnungen\actions.ts:68:12)
+    at resolveErrorDev (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:1919:105)
+    at processFullStringRow (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2434:29)
+    at processFullBinaryRow (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2393:9)
+    at processBinaryChunk (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2502:221)
+    at progress (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2689:13)
+    at form (<anonymous>)
+    at InvoiceForm (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/_055xka_._.js:209:214)
+    at NeueRechnungPage (app\rechnungen\neu\page.tsx:35:7)
+  66 |
+  67 |   let invoiceId!: string;
+> 68 |   await db.transaction(async (tx) => {
+     |            ^
+  69 |     const [invoice] = await tx
+  70 |       .insert(invoices)
+  71 |       .values({ ...fields, invoice_number: invoiceNumber, status: "entwurf" })
+⨯ Error: No transactions support in neon-http driver
+    at createInvoice (app\rechnungen\actions.ts:68:12)
+  66 |
+  67 |   let invoiceId!: string;
+> 68 |   await db.transaction(async (tx) => {
+     |            ^
+  69 |     const [invoice] = await tx
+  70 |       .insert(invoices)
+  71 |       .values({ ...fields, invoice_number: invoiceNumber, status: "entwurf" }) {
+  digest: '520701565'
+}
+[browser] Uncaught Error: No transactions support in neon-http driver
+    at createInvoice (app\rechnungen\actions.ts:68:12)
+    at resolveErrorDev (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:1919:105)
+    at processFullStringRow (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2434:29)
+    at processFullBinaryRow (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2393:9)
+    at processBinaryChunk (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2502:221)
+    at progress (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2689:13)
+    at form (<anonymous>)
+    at InvoiceForm (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/_055xka_._.js:209:214)
+    at NeueRechnungPage (app\rechnungen\neu\page.tsx:35:7)
+  66 |
+  67 |   let invoiceId!: string;
+> 68 |   await db.transaction(async (tx) => {
+     |            ^
+  69 |     const [invoice] = await tx
+  70 |       .insert(invoices)
+  71 |       .values({ ...fields, invoice_number: invoiceNumber, status: "entwurf" })
+⨯ Error: ENOENT: no such file or directory, open 'C:\ROOT\node_modules\pdfkit\js\data\Helvetica.afm'
+    at renderInvoicePdf (lib\invoice-pdf.ts:244:15)
+    at GET (app\rechnungen\[id]\pdf\route.ts:60:37)
+  242 |
+  243 | export async function renderInvoicePdf(input: InvoicePdfInput): Promise<Buffer> {
+> 244 |   const doc = new PDFDocument({
+      |               ^
+  245 |     size: "A4",
+  246 |     margins: { top: 0, left: 0, bottom: 0, right: 0 },
+  247 |     autoFirstPage: true, {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\ROOT\\node_modules\\pdfkit\\js\\data\\Helvetica.afm'
+}
+⨯ Error: ENOENT: no such file or directory, open 'C:\ROOT\node_modules\pdfkit\js\data\Helvetica.afm'
+    at renderInvoicePdf (lib\invoice-pdf.ts:244:15)
+    at GET (app\rechnungen\[id]\pdf\route.ts:60:37)
+  242 |
+  243 | export async function renderInvoicePdf(input: InvoicePdfInput): Promise<Buffer> {
+> 244 |   const doc = new PDFDocument({
+      |               ^
+  245 |     size: "A4",
+  246 |     margins: { top: 0, left: 0, bottom: 0, right: 0 },
+  247 |     autoFirstPage: true, {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\ROOT\\node_modules\\pdfkit\\js\\data\\Helvetica.afm'
+}
+⨯ Error: ENOENT: no such file or directory, open 'C:\ROOT\node_modules\pdfkit\js\data\Helvetica.afm'
+    at renderInvoicePdf (lib\invoice-pdf.ts:244:15)
+    at GET (app\rechnungen\[id]\pdf\route.ts:60:37)
+  242 |
+  243 | export async function renderInvoicePdf(input: InvoicePdfInput): Promise<Buffer> {
+> 244 |   const doc = new PDFDocument({
+      |               ^
+  245 |     size: "A4",
+  246 |     margins: { top: 0, left: 0, bottom: 0, right: 0 },
+  247 |     autoFirstPage: true, {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\ROOT\\node_modules\\pdfkit\\js\\data\\Helvetica.afm'
+}
+⨯ Error: No transactions support in neon-http driver
+    at updateInvoice (app\rechnungen\actions.ts:90:12)
+  88 |   }
+  89 |
+> 90 |   await db.transaction(async (tx) => {
+     |            ^
+  91 |     await tx
+  92 |       .update(invoices)
+  93 |       .set({ ...fields, updated_at: new Date() }) {
+  digest: '3563246591'
+}
+[browser] Uncaught Error: No transactions support in neon-http driver
+    at updateInvoice (app\rechnungen\actions.ts:90:12)
+    at resolveErrorDev (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:1919:105)
+    at processFullStringRow (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2434:29)
+    at processFullBinaryRow (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2393:9)
+    at processBinaryChunk (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2502:221)
+    at progress (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2689:13)
+    at form (<anonymous>)
+    at InvoiceForm (file://C:/Users/Ermin Zoronjic/Documents/rechnify/rechnify/.next/dev/static/chunks/_055xka_._.js:209:214)
+    at BearbeitenPage (app\rechnungen\[id]\bearbeiten\page.tsx:63:7)
+  88 |   }
+  89 |
+> 90 |   await db.transaction(async (tx) => {
+     |            ^
+  91 |     await tx
+  92 |       .update(invoices)
+  93 |       .set({ ...fields, updated_at: new Date() })

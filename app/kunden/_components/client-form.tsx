@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
 import type { clients } from "@/lib/db/schema";
 import type { InferSelectModel } from "drizzle-orm";
@@ -155,12 +156,12 @@ export function ClientForm({ action, client, submitLabel }: ClientFormProps) {
         >
           {submitLabel}
         </button>
-        <a
+        <Link
           href="/kunden"
           className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
         >
           Abbrechen
-        </a>
+        </Link>
       </div>
     </form>
   );

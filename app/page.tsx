@@ -1,11 +1,13 @@
 export const dynamic = "force-dynamic";
 
-import { eq, ne, and, sql } from "drizzle-orm";
+import { and, eq, gte, lt, ne } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { invoices, invoiceLineItems } from "@/lib/db/schema";
 import { formatChf } from "@/lib/format";
 
 const CURRENT_YEAR = new Date().getFullYear();
+const YEAR_START = `${CURRENT_YEAR}-01-01`;
+const NEXT_YEAR_START = `${CURRENT_YEAR + 1}-01-01`;
 const VAT_RATES = ["0.081", "0.038", "0.026"] as const;
 
 export default async function DashboardPage() {
@@ -22,7 +24,8 @@ export default async function DashboardPage() {
     .where(
       and(
         ne(invoices.status, "entwurf"),
-        sql`${invoices.issue_date} LIKE ${CURRENT_YEAR + "-%"}`
+        gte(invoices.issue_date, YEAR_START),
+        lt(invoices.issue_date, NEXT_YEAR_START)
       )
     );
 

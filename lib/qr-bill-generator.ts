@@ -19,7 +19,14 @@ export interface QrBillInput {
 }
 
 export function generateQrBill(input: QrBillInput): string {
-  const data: Data = {
+  const data = qrBillData(input);
+
+  const svg = new SwissQRBill(data, { language: "DE" });
+  return svg.toString();
+}
+
+export function qrBillData(input: QrBillInput): Data {
+  return {
     currency: input.currency,
     amount: input.amount,
     creditor: {
@@ -37,9 +44,6 @@ export function generateQrBill(input: QrBillInput): string {
       city: input.debtorCity,
       country: input.debtorCountry,
     },
-    message: input.invoiceNumber,
+    reference: input.invoiceNumber,
   };
-
-  const svg = new SwissQRBill(data, { language: "DE" });
-  return svg.toString();
 }

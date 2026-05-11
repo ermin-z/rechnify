@@ -100,6 +100,12 @@ export default async function RechnungDetailPage({
               Duplizieren
             </button>
           </form>
+          <Link
+            href={`/rechnungen/${id}/pdf`}
+            className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            PDF herunterladen
+          </Link>
           <StatusActions id={id} status={invoice.status} />
         </div>
       </div>
