@@ -48,21 +48,49 @@ function emptyItem(): LineItem {
   };
 }
 
-interface Props {
-  clients: ClientOption[];
-  action?: typeof createInvoice;
+interface InitialData {
+  clientId: string;
+  issueDate: string;
+  dueDate: string;
+  notes: string | null;
+  lineItems: Array<{
+    description: string;
+    quantity: string;
+    unit: string;
+    unit_price: string;
+    vat_rate: string;
+  }>;
 }
 
-export function InvoiceForm({ clients, action = createInvoice }: Props) {
+interface Props {
+  clients: ClientOption[];
+  action: (formData: FormData) => Promise<void>;
+  initialData?: InitialData;
+  submitLabel?: string;
+}
+
+export function InvoiceForm({
+  clients,
+  action,
+  initialData,
+  submitLabel = "Als Entwurf speichern",
+}: Props) {
   const firstClient = clients[0];
   const today = isoToday();
 
-  const [clientId, setClientId] = useState(firstClient?.id ?? "");
-  const [issueDate, setIssueDate] = useState(today);
-  const [dueDate, setDueDate] = useState(
-    firstClient ? addDays(today, firstClient.payment_term_days) : today
+  const [clientId, setClientId] = useState(
+    initialData?.clientId ?? firstClient?.id ?? ""
   );
-  const [items, setItems] = useState<LineItem[]>([emptyItem()]);
+  const [issueDate, setIssueDate] = useState(initialData?.issueDate ?? today);
+  const [dueDate, setDueDate] = useState(
+    initialData?.dueDate ??
+      (firstClient ? addDays(today, firstClient.payment_term_days) : today)
+  );
+  const [items, setItems] = useState<LineItem[]>(
+    initialData?.lineItems.map((i) => ({ ...i, key: crypto.randomUUID() })) ?? [
+      emptyItem(),
+    ]
+  );
 
   const selectedClient = clients.find((c) => c.id === clientId);
 
@@ -185,6 +213,7 @@ export function InvoiceForm({ clients, action = createInvoice }: Props) {
           <textarea
             name="notes"
             rows={2}
+            defaultValue={initialData?.notes ?? ""}
             placeholder="Projektreferenz, Zahlungshinweise…"
             className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent resize-none"
           />
@@ -353,7 +382,7 @@ export function InvoiceForm({ clients, action = createInvoice }: Props) {
           type="submit"
           className="rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors"
         >
-          Als Entwurf speichern
+          {submitLabel}
         </button>
         <a
           href="/rechnungen"

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { asc } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { clients } from "@/lib/db/schema";
+import { createInvoice } from "../actions";
 import { InvoiceForm } from "../_components/invoice-form";
 
 export default async function NeueRechnungPage() {
@@ -31,7 +32,7 @@ export default async function NeueRechnungPage() {
 
       <h1 className="text-2xl font-bold text-gray-900 mb-6">Neue Rechnung</h1>
 
-      <InvoiceForm clients={allClients} />
+      <InvoiceForm clients={allClients} action={createInvoice} />
     </div>
   );
 }
